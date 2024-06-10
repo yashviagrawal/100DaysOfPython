@@ -1,0 +1,21 @@
+from turtle import Turtle
+from turtle import Screen
+import random
+screen = Screen()
+tim = Turtle()
+
+screen.colormode(255)
+tim.pensize(1)
+tim.speed(0)
+
+
+def spirograph(deg):
+    for i in range(0, int(360/deg)):
+        # tup = (random.randint(90, 255), random.randint(60, 255), random.randint(100, 255))
+        # tim.pencolor(tup)
+        tim.circle(100)
+        tim.left(deg)
+
+
+spirograph(2)
+

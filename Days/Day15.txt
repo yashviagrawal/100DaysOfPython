@@ -1,0 +1,91 @@
+MENU = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+            "milk": 0,
+        },
+        "cost": 80,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 140,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 180,
+    }
+}
+
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+    "wallet": 0,
+}
+
+
+def cashier(drink):
+    ten = int(input("Enter ten: "))
+    fifty = int(input("Enter fifty: "))
+    hundred = int(input("Enter hundred: "))
+    amt = (ten * 10) + (fifty * 50) + (hundred * 100)
+    if amt > int(MENU[drink]["cost"]):
+        resources["wallet"] += int(MENU[drink]["cost"])
+        return amt - int(MENU[drink]["cost"])
+    else:
+        return -1
+
+
+def drinkPossible(drink):
+    if resources["water"] >= MENU[drink]["ingredients"]["water"] and resources["milk"] >= MENU[drink]["ingredients"][
+        "milk"] and resources["coffee"] >= MENU[drink]["ingredients"]["coffee"]:
+        return True
+    else:
+        return False
+
+
+def makeDrink(drink):
+    resources["water"] -= MENU[drink]["ingredients"]["water"]
+    resources["milk"] -= MENU[drink]["ingredients"]["milk"]
+    resources["coffee"] -= MENU[drink]["ingredients"]["coffee"]
+
+
+def res():
+    print(f"Water: {resources['water']}ml")
+    print(f"Milk: {resources['milk']}ml")
+    print(f"Coffee: {resources['coffee']}gm")
+    print(f"Wallet: ₹{resources['wallet']}")
+
+
+def takeOrder(drink):
+    if drinkPossible(drink):
+        print(f"{drink} costs {MENU[drink]['cost']}")
+        change = cashier(drink)
+        if change >= 0:
+            makeDrink(drink)
+            print(f"Here is your {drink} and change of Rs.{change}, thank you for ordering")
+        else:
+            print("Insufficient amount payed, replace order")
+    else:
+        print(f"Not sufficient resources available for {drink}")
+
+isOn = True
+print("Machine is On")
+while isOn:
+    drink = input("Select drink (espresso/latte/cappuccino): ").lower()
+    if drink == "report":
+        res()
+    elif drink == "off":
+        isOn = False
+        print("Turning Machine Off")
+    else:
+        takeOrder(drink)

@@ -1,0 +1,52 @@
+import random
+def drawCard():
+    return random.randint(1, 10)
+
+def dealCards():
+    deck = []
+    for i in range(0, 2):
+        deck.append(drawCard())
+    return deck
+
+def checkWinner(comp, user):
+    if comp <= 21 and user <=21:
+        if comp < user:
+            return 1
+        else:
+            return 0
+    elif comp == user: return 2
+    elif comp > 21: return 1
+    elif user > 21: return 0
+    else: return 2
+
+def checkSum(list):
+    suml = sum(list)
+    try:
+        pos = list.index(1)
+    except ValueError:
+        pos = -1
+    if pos != -1 and suml <= 11:
+        list[pos] = 11
+    return sum(list)
+
+def checkDraw(list):
+    if sum(list) < 21:
+        list.append(drawCard())
+        print(f"user Cards: {listUser}")
+    return list
+
+result = {
+    0: "Computer Wins",
+    1: "User Wins",
+    2: "Draw"
+}
+listComp = dealCards()
+listUser = dealCards()
+print(f"Comp Cards: [{listComp[0]}, X]")
+print(f"user Cards: {listUser}")
+listUser = checkDraw(listUser)
+print(result[checkWinner(checkSum(listComp), checkSum(listUser))])
+print(f"Comp Cards: {listComp}")
+
+
+

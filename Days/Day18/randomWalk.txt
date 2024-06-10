@@ -1,0 +1,23 @@
+from turtle import Turtle
+from turtle import Screen
+import random
+screen = Screen()
+tim = Turtle()
+
+screen.colormode(255)
+tim.pensize(10)
+tim.speed(0)
+
+def randomWalk():
+    for i in range(0, 1000):
+        tup = (random.randint(90, 255), random.randint(60, 255), random.randint(100, 255))
+        tim.pencolor(tup)
+        dir = random.randint(0, 100)
+        if (dir % 2) == 0:
+            tim.right(random.randint(1, 4) * 90)
+        else:
+            tim.left(random.randint(1, 4) * 90)
+        tim.forward(40)
+
+
+randomWalk()

@@ -1,0 +1,49 @@
+from turtle import Turtle, Screen
+import random
+
+screen = Screen()
+screen.setup(width=1000, height=800)
+
+setterTurtle = Turtle("circle")
+setterTurtle.speed(10)
+setterTurtle.penup()
+setterTurtle.goto(450, 350)
+setterTurtle.pendown()
+setterTurtle.right(90)
+setterTurtle.forward(700)
+
+allTurtle = []
+isRace = False
+colors = ["red", "blue", "green", "purple"]
+for i in range(1, 5):
+    tim = Turtle("turtle")
+    tim.speed(0)
+    tim.color(colors[i-1])
+    tim.penup()
+    tim.goto(-400, (350-(i*150)))
+    tim.pencolor(colors[i-1])
+    tim.pendown()
+    allTurtle.append(tim)
+
+
+user_bet = screen.textinput("Make a bet", "enter turtle color: ")
+print(f"your bet is on the {user_bet.upper()} TURTLE")
+
+
+if user_bet:
+    isRace = True
+
+while isRace:
+    for i in range(0, 4):
+        allTurtle[i].forward(random.randint(0, 10))
+        # cheating line
+        # if allTurtle[i].pencolor() == user_bet: allTurtle[i].forward(1)
+        if allTurtle[i].xcor() > 450:
+            isRace = False
+            if allTurtle[i].pencolor() == user_bet:
+                print(f"You Won, {allTurtle[i].pencolor()}")
+            else:
+                print(f"Better Luck Next Time, {allTurtle[i].pencolor()} won")
+        # print(f"{allTurtle[i].pencolor()} at {allTurtle[i].xcor()}")
+
+screen.exitonclick()

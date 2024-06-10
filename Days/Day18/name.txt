@@ -1,0 +1,67 @@
+import turtle
+import turtle as t
+
+tim = t.Turtle()
+
+tim.pensize(4)
+tim.left(90)
+tim.forward(100)
+tim.back(50)
+tim.right(90)
+tim.forward(50)
+tim.left(90)
+tim.forward(50)
+tim.back(100)
+tim.right(90)
+
+tim.forward(20)
+# I
+tim.left(90)
+tim.forward(100)
+tim.right(90)
+tim.forward(15)
+tim.back(30)
+tim.forward(15)
+tim.left(90)
+tim.back(100)
+tim.right(90)
+
+tim.forward(20)
+# R
+tim.left(90)
+tim.forward(100)
+tim.right(135)
+tim.forward(40)
+tim.right(90)
+tim.forward(40)
+tim.left(90)
+tim.forward(60)
+
+tim.left(45)
+tim.forward(0)
+
+#A
+tim.left(75)
+tim.forward(100)
+tim.right(150)
+tim.forward(60)
+tim.right(105)
+tim.forward(30)
+tim.back(30)
+tim.left(105)
+tim.forward(40)
+tim.left(75)
+
+tim.forward(10)
+
+#K
+tim.left(90)
+tim.forward(100)
+tim.back(50)
+tim.right(40)
+tim.forward(62)
+tim.back(52)
+tim.right(110)
+tim.forward(66)
+tim.left(61)
+

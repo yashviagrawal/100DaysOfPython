@@ -1,0 +1,11 @@
+name = "Hirak"
+
+def changeName():
+    global name
+    name = "Pranjal"
+    print(f"Name is {name}")
+
+changeName()
+print(f"Name is {name}")
+
+#and guess the number game

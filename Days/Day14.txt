@@ -1,0 +1,46 @@
+import random
+
+USERS = [
+    ["Hirak", "Chaitanya", "Ved", "Devansh", "Kaustubh", "Tarun", "Steve", "Yashvi", "Diya", "KD", "KC", "Param"],
+    [1000, 1100, 386, 247, 300, 228, 150, 1234, 1400, 1891, 1248, 1925]
+]
+PLAYERSCORE = 0
+USED = []
+
+def getUser():
+    global USED
+    usedUser = True
+    while usedUser:
+        userNum = random.randint(0, len(USERS[0]) - 1)
+        try:
+            found = USED.index(userNum)
+        except ValueError:
+            found = -1
+        if found == -1:
+            USED.append(userNum)
+            return userNum
+
+def play(a, b):
+    global USERS, PLAYERSCORE
+    scoreA = USERS[1][a]
+    scoreB = USERS[1][b]
+    print(f"1. {USERS[0][a]}\tvs\t2. {USERS[0][b]}")
+    choice = int(input("Enter choice: "))
+    if scoreA > scoreB and choice == 1:
+        PLAYERSCORE += 1
+        print(f"Correct, score is {PLAYERSCORE}")
+        return 1
+    if scoreA < scoreB and choice == 2:
+        PLAYERSCORE += 1
+        print(f"Correct, score is {PLAYERSCORE}")
+        return 1
+    else:
+        print("Game Over")
+        print(f"Final Score {PLAYERSCORE}")
+        return 100
+
+
+i = 0
+while i <= len(USERS[0])/2 + 1:
+    i += play(getUser(), getUser())
+

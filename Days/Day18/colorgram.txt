@@ -1,0 +1,13 @@
+import colorgram
+colors = colorgram.extract('image.png', 10)
+rgbp = []
+
+for color in colors:
+    first_color = color
+    rgb = first_color.rgb # e.g. (255, 151, 210)
+    rgbp.append(rgb)
+print(rgbp)
+
+
+
+

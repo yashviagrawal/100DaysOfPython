@@ -1,0 +1,19 @@
+from turtle import Turtle
+from turtle import Screen
+import random
+screen = Screen()
+tim = Turtle()
+
+screen.colormode(255)
+tim.pensize(3)
+
+def drawShape(sides, max):
+    for j in range(sides, max+1):
+        angle = float(360/j)
+        tup = (random.randint(90, 255), random.randint(60, 255), random.randint(100, 255))
+        tim.pencolor(tup)
+        for i in range(0, j):
+            tim.forward(100)
+            tim.left(angle)
+
+drawShape(3, 7)
